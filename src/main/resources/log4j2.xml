@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" shutdownHook="disable"
+               schema="http://logging.apache.org/log4j/2.0/config ">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+        </Console>
+        <RollingFile name="File" fileName="src/main/resources/report/sibsutis-dorm-automation.log"
+                     filePattern="logs/sibsutis-dorm-automation-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout charset="UTF-8"
+                           pattern="%d{ISO8601} %-5p [%t] [%c{2}] %m%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="File" />
+            <AppenderRef ref="Console" />
+        </Root>
+        <Logger name="ru.sibsutis.dormitory" level="INFO" />
+    </Loggers>
+</Configuration>

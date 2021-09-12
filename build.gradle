@@ -1,0 +1,89 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'checkstyle'
+	id 'java'
+}
+apply plugin: 'checkstyle'
+group = 'ru.sibsutis'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+dependencies {
+	implementation(
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+			'org.springframework.boot:spring-boot-starter-security',
+			'org.springframework.boot:spring-boot-starter-thymeleaf',
+			'org.springframework.boot:spring-boot-starter-web',
+			'org.thymeleaf.extras:thymeleaf-extras-springsecurity5',
+			'org.springframework.boot:spring-boot-starter-log4j2'
+	)
+
+	implementation group: 'commons-io', name: 'commons-io', version: '2.5'
+	implementation group: 'com.puppycrawl.tools', name: 'checkstyle', version: '8.30'
+
+//	TODO: добавить Swagger и перенести доку в папку resources -> docs
+
+	compileOnly 'org.projectlombok:lombok'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	runtimeOnly 'org.postgresql:postgresql'
+
+	annotationProcessor(
+			'org.springframework.boot:spring-boot-configuration-processor',
+			'org.projectlombok:lombok'
+	)
+
+	testImplementation (
+			'org.springframework.boot:spring-boot-starter-test',
+			'org.springframework.security:spring-security-test'
+	)
+}
+
+test {
+	useJUnitPlatform()
+}
+
+bootJar {
+	mainClass = 'ru.sibsutis.server.app.Starter'
+}
+
+def classpath = "${project.rootDir}/src/main/resources"
+
+task generateVersionProperties {
+	doLast {
+		def propertiesFile = file "${classpath}/app.version"
+		propertiesFile.text = project.version.toString()
+	}
+}
+processResources.dependsOn generateVersionProperties
+
+checkstyle {
+	toolVersion '8.36.1'
+	configFile file("${projectDir}/checkstyle.xml")
+	reportsDir file ("${classpath}/report")
+}
+checkstyleMain {
+	source ='src/main/java'
+}
+
+checkstyleTest {
+	source ='src/test/java'
+	checkstyleTest.enabled = false
+}
