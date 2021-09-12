@@ -79,6 +79,7 @@ checkstyle {
 	configFile file("${projectDir}/checkstyle.xml")
 	reportsDir file ("${classpath}/report")
 }
+
 checkstyleMain {
 	source ='src/main/java'
 }
