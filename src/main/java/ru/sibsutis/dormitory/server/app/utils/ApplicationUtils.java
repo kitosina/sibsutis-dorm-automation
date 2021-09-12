@@ -10,7 +10,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 public abstract class ApplicationUtils {
 
-    private static final Logger LOG = getLogger(Starter.class);
+    private static final Logger LOG = getLogger(ApplicationUtils.class);
 
     /**
      * @return Возвращает версию приложения
