@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--<meta charset="UTF-8"> -->
+    <title>Общежитие СибГУТИ - Главная</title>
+
+    <link rel="stylesheet" href="style/personal_data.css">
+
+    <!--    Тег для адаптивной верстки Bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body style="background-color: #f5f0f0; height:100%;">
+
+<!--Навигационная панель-->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" id="logo">SIBSUTISDorm</a>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class='main'>
+    <form class="row g-3" th:action="@{/personal_data/create}" method="post">
+        <div class="mb-3">
+            <label for="FirstnameInput" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="FirstnameInput" placeholder="Введите имя" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="LastnameInput" class="form-label">Фамилия</label>
+            <input type="text" class="form-control" id="LastnameInput" placeholder="Введите фамилию" name="lastname">
+        </div>
+        <div class="mb-3">
+            <label for="PatronymicInput" class="form-label" >Отчество</label>
+            <input type="text" class="form-control" id="PatronymicInput" placeholder="Введите отчество" name="patronymic">
+        </div>
+<!--        <div class="mb-3">-->
+<!--            <label for="PassportInput" class="form-label">Паспорт</label>-->
+<!--            <input type="text" class="form-control" id="PassportInput" placeholder="Введите серию и номер паспорта" name="passport">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="birthDate" class="form-label">Дата рождения</label>-->
+<!--            <input type="date" id="birthDate" name="birth_date"-->
+<!--                   value="2021-07-22"-->
+<!--                   min="2000-01-01" max="2050-12-31">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="contractBegin" class="form-label">Дата начала договора</label>-->
+<!--            <input type="date" id="contractBegin" name="contract_begin"-->
+<!--                   value="2021-07-22"-->
+<!--                   min="2000-01-01" max="2050-12-31">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="contractEnd" class="form-label">Дата окончания договора</label>-->
+<!--            <input type="date" id="contractEnd" name="contract_end"-->
+<!--                   value="2021-07-22"-->
+<!--                   min="2000-01-01" max="2050-12-31">-->
+<!--        </div>-->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+    </form>
+
+</div>
+
+<footer style="background-color: #011100; text-align: center; height: 55px; color: white;"><p>(c)2021</p></footer>
+</body>
+</html>

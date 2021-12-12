@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Общежитие СибГУТИ</title>
+    <!--    Тег для адаптивной верстки Bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    Bootstrap CSS-->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Boostrap Validator</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>  
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="validator.min.js"></script>
+    <link rel="stylesheet" href="/style/registration.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<!--Navbar-->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="logo">SIBSUTISDorm</a>
+    <form class="d-flex">
+      <button class="btn btn-outline-success" type="submit">Help</button>
+    </form>
+  </div>
+</nav>
+
+    <div class="main">
+<div class="RegTitle"><p>Регистрация</p></div>
+<!--Validation-->
+<div class="registrationForm">
+<form action="/registration" method="post">
+     <div class="mb-3">
+        <label for="InputEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="InputName" class="form-label">Name</label>
+        <input type="name" class="form-control" id="InputName" aria-describedby="nameHelp">
+    </div>
+    <div class="mb-3">
+        <label for="InputLastname" class="form-label">Lastname</label>
+        <input type="lastname" class="form-control" id="InputLastname" aria-describedby="lastnameHelp">
+    </div>
+    <div class="mb-3">
+        <label for="InputPatronymic" class="form-label">Patronymic</label>
+        <input type="patronymic" class="form-control" id="InputPatronymic" aria-describedby="patronymicHelp">
+    </div>
+
+
+    <!--        <div>-->
+    <!--            <label for="birthDate" class="form-label">Дата рождения</label>-->
+    <!--            <input type="date" id="birthDate" name="birth_date"-->
+    <!--                   value="2021-07-22"-->
+    <!--                   min="2000-01-01" max="2050-12-31">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label for="contractBegin" class="form-label">Дата начала договора</label>-->
+    <!--            <input type="date" id="contractBegin" name="contract_begin"-->
+    <!--                   value="2021-07-22"-->
+    <!--                   min="2000-01-01" max="2050-12-31">-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label for="contractEnd" class="form-label">Дата окончания договора</label>-->
+    <!--            <input type="date" id="contractEnd" name="contract_end"-->
+    <!--                   value="2021-07-22"-->
+    <!--                   min="2000-01-01" max="2050-12-31">-->
+    <!--        </div>-->
+
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg paymentType">
+        <option>Типы оплаты</option>
+    </select>
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg dorm">
+        <option>Общежитие 1</option>
+    </select>
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg section">
+        <option>Секция 701-708</option>
+    </select>
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg room">
+        <option>Комната 708</option>
+    </select>
+
+    <div class="mb-3">
+        <label for="InputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="InputPassword">
+    </div>
+    <div class="mb-3">
+      <label for="InputPassword1" class="form-label">Repeat Password</label>
+      <input type="passrep" class="form-control" id="InputPassword1">
+      <div id="passwordHelp" class="form-text">Please, Repeat password.</div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="Agreement">
+      <label class="form-check-label" for="Agreement">Agree with...</label>
+    </div>
+    <div class="linkes">
+<!--        <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </div>
+    <div class="linkes">
+        <a id="log" href="#">Войти</a>
+    </div>
+</form>
+</div>
+    </div>
+    
+<footer style="background-color: #011100; text-align: center; height: 55px; color: white;"><p>(c)2021</p></footer>     
+
+</body>
+</html>

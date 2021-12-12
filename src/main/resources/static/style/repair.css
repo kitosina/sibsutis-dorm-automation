@@ -1,0 +1,111 @@
+body{
+    background-color:#f5f0f0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+html{height: 100%;
+    
+}
+
+.main {
+    flex: 1;
+    flex-grow: 1;
+}
+
+.registrationForm{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 5%;
+    background-color: transparent;
+    border-color: #C4C4C4;
+    border: solid;
+}
+.registrationForm button {
+    background-color: transparent;
+    color:#6A9B75;
+    border-color: #6A9B75;
+    border: solid;
+    font-size: 14pt;
+
+}
+
+.registrationForm button:hover {
+    color: white;
+    background-color:#6A9B75;
+    border-color: #6A9B75;
+}
+
+.body div{
+    align-items: center;
+    justify-items: center;
+}
+
+#logo{
+    color: white;
+    font-family: ABeeZee;
+    font-size: 18pt;
+}
+.linkes{
+    text-align: center;
+    margin-top: 15px;
+}
+.nav-item a{
+    color: white;
+    padding-left:  30px;
+    font-family: ABeeZee;
+    font-size: 14pt;
+    text-decoration: none;
+}
+
+.RegTitle {
+    text-align: center;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+
+
+@media (max-width: 575.98px) { 
+.registrationForm button {
+    background-color: transparent;
+    color:#6A9B75;
+    border-color: #6A9B75;
+    border: solid;
+    font-size: 8pt;
+    }
+.registrationForm{
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 5%;
+    background-color: transparent;
+    border-color: #C4C4C4;
+    border: solid;
+    font-size: 10px;
+    }
+}
+.form-control{
+    background-color: #E5E5E5;
+}
+
+
+@media (min-width: 1500px) {
+    .registrationForm button {
+    background-color: transparent;
+    color:#6A9B75;
+    border-color: #6A9B75;
+    border: solid;
+    font-size: 17pt;
+    }
+.registrationForm{
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 5%;
+    background-color: transparent;
+    border-color: #C4C4C4;
+    border: solid;
+    font-size: 17px;
+}
+
+    }
