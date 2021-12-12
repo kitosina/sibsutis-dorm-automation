@@ -31,7 +31,6 @@ public class DormEntity {
      */
     @SuppressWarnings("checkstyle:magicnumber")
     @Column(name = "name", length = 50, unique = true)
-    @Schema(example = "2", description = "Идентификатор антивирусного продукта")
     private String name;
 
     /**
