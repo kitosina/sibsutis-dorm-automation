@@ -2,7 +2,6 @@ package ru.sibsutis.dormitory.server.app.utils;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
-import ru.sibsutis.dormitory.server.app.Starter;
 
 import java.io.InputStream;
 
