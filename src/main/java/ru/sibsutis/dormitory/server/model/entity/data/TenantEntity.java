@@ -1,7 +1,10 @@
 package ru.sibsutis.dormitory.server.model.entity.data;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -17,11 +20,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
 @Setter
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity(name = "tenant")
 @Table(name = "tenant", schema = "data")
 public class TenantEntity {
 
@@ -53,23 +60,20 @@ public class TenantEntity {
     /**
      * Дата дня рождения жильца
      */
-    @Column(name = "birth_day")
-    @Temporal(TemporalType.DATE)
-    private Date birthDay;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
     /**
      * Дата начала контракта сотрудника
      */
     @Column(name = "contract_begin")
-    @Temporal(TemporalType.DATE)
-    private Date contractBegin;
+    private LocalDate contractBegin;
 
     /**
      * Дата окончания контракта сотрудника
      */
     @Column(name = "contract_end")
-    @Temporal(TemporalType.DATE)
-    private Date contractEnd;
+    private LocalDate contractEnd;
 
     /**
      * Серия + Номер паспорта
@@ -81,16 +85,14 @@ public class TenantEntity {
     /**
      * Ссылка на таблицу со сканами паспорта
      */
-    @SuppressWarnings("checkstyle:magicnumber")
-    @Column(name = "passport_ref", length = 10)
-    private String passportRef;
+    @Column(name = "passport_scan")
+    private byte[] passportScan;
 
     /**
      * Ссылка на таблицу со сканами регистрации
      */
-    @SuppressWarnings("checkstyle:magicnumber")
-    @Column(name = "reg_ref", length = 10)
-    private String regRef;
+    @Column(name = "reg_scan")
+    private byte[] regScan;
 
     /**
      * Email жильца

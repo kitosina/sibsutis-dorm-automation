@@ -1,7 +1,9 @@
 package ru.sibsutis.dormitory.server.model.entity.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,16 +16,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "room")
 @Table(name = "room", schema = "data")
 public class RoomEntity {
 
     /**
-     * Идентификатор инвентаря
+     * Идентификатор комнаты
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,5 +56,14 @@ public class RoomEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "section_id", nullable = false)
     private SectionEntity sectionEntity;
+
+    @OneToMany(mappedBy = "roomEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TenantEntity> tenantEntities;
+
+    public RoomEntity(Long id, int numRoom, int capacity) {
+        this.id = id;
+        this.numRoom = numRoom;
+        this.capacity = capacity;
+    }
 
 }

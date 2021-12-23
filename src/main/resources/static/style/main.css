@@ -1,0 +1,87 @@
+body{
+    background-color:#f5f0f0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+html{height: 100%;
+    
+}
+
+.main {
+    flex: 1;
+    flex-grow: 1;
+}
+.menu-card button {
+    background-color: transparent;
+    color:#6A9B75;
+    border-color: #6A9B75;
+    border: solid;
+    font-size: 14pt;
+
+}
+
+.menu-card button:hover {
+    color: white;
+    background-color:#6A9B75;
+    border-color: #6A9B75;
+}
+
+.body div{
+    align-items: center;
+    justify-items: center;
+}
+
+#logo{
+    color: white;
+    font-family: ABeeZee;
+    font-size: 18pt;
+}
+
+.linkes{
+    text-align: center;
+    margin-top: 15px;
+}
+.nav-item a{
+    color: white;
+    padding-left:  30px;
+    font-family: ABeeZee;
+    font-size: 14pt;
+    text-decoration: none;
+}
+
+#footer{
+    position: fixed;
+    margin-top: 50px;
+    height: 10%;
+    color: white;
+    text-align:center;
+    background-color: green;
+}
+.menu {
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-card{
+    margin-bottom: 3%;
+    text-align: center;
+    align-items: center;
+    margin-left: 6%;
+    margin-right: 6%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: transparent;
+    border-color: #C4C4C4;
+    border: solid;
+    font-size: 17px;
+    display: inline-flex;
+}

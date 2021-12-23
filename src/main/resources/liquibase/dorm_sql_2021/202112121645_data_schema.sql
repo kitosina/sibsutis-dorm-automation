@@ -1,6 +1,6 @@
 create table data.dorm
 (
-    id           integer not null
+    id           serial
         constraint dorm_pk
             primary key,
     name         varchar(50),
@@ -27,7 +27,7 @@ create unique index dorm_id_uindex
 
 create table data.section
 (
-    id      integer not null
+    id      serial
         constraint section_pk
             primary key,
     name    varchar(20),
@@ -48,7 +48,7 @@ create unique index section_id_uindex
 
 create table data.room
 (
-    id         integer not null
+    id         serial
         constraint room_pk
             primary key,
     num_room   integer,
@@ -72,7 +72,7 @@ alter table data.room
 
 create table data.payment_type
 (
-    id             integer not null
+    id             serial
         constraint payment_type_pk
             primary key,
     name_type      varchar(100),
@@ -96,7 +96,7 @@ create unique index payment_type_name_type_uindex
 
 create table data.tenant
 (
-    id              integer      not null
+    id              serial
         constraint tenant_pk
             primary key,
     name            varchar(30)  not null,
@@ -109,8 +109,8 @@ create table data.tenant
     contract_end    date,
     birth_date      date,
     passport        varchar(10),
-    passport_ref    varchar,
-    reg_ref         integer,
+    passport_scan   bytea,
+    reg_scan        bytea,
     payment_type_id integer
         constraint tenant_payment_type_id_fk
             references data.payment_type,
@@ -139,7 +139,7 @@ create unique index payment_type_id_uindex
 
 create table data.inventory
 (
-    id        integer not null
+    id        serial
         constraint inventory_pk
             primary key,
     inventory varchar(30)
@@ -152,7 +152,7 @@ alter table data.inventory
 
 create table data.inventarisation
 (
-    id           integer not null
+    id           serial
         constraint inventarisation_pk
             primary key,
     room_id      integer
@@ -180,13 +180,13 @@ create unique index inventory_id_uindex
 
 create table data.workers
 (
-    id             integer not null
+    id             serial
         constraint workers_pk
             primary key,
     name           varchar,
     last_name      varchar,
     patronymic     varchar,
-    birth_day      date,
+    birth_date     date,
     passport       varchar(10),
     inn            varchar(14),
     snils          varchar(16),

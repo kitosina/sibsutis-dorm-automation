@@ -4,13 +4,13 @@ import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
     /**
-     * Роль USER
-     */
-    USER,
-    /**
      * Роль ADMIN
      */
-    ADMIN;
+    ADMIN,
+    /**
+     * Роль TENANT
+     */
+    TENANT;
 
     /**
      * Automatically generated method for authorities and role system in Spring Security

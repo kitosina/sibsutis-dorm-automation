@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -53,9 +54,8 @@ public class WorkersEntity {
     /**
      * Дата дня рождения сотрудника
      */
-    @Column(name = "birth_day")
-    @Temporal(TemporalType.DATE)
-    private Date birthDay;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
     /**
      * Серия + Номер паспорта
@@ -82,21 +82,14 @@ public class WorkersEntity {
      * Дата начала контракта сотрудника
      */
     @Column(name = "contract_begin")
-    @Temporal(TemporalType.DATE)
-    private Date contractBegin;
+    private LocalDate contractBegin;
 
     /**
      * Дата окончания контракта сотрудника
      */
     @Column(name = "contract_end")
-    @Temporal(TemporalType.DATE)
-    private Date contractEnd;
+    private LocalDate contractEnd;
 
-    /**
-     * Должность сотрудника
-     */
-    @Column(name = "post")
-    private String post;
 
     /**
      * Email сотрудника
@@ -110,4 +103,12 @@ public class WorkersEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dorm_id", nullable = false)
     private DormEntity dormEntity;
+
+    /**
+     * Ссылка на сущность WorkTypeEntity
+     */
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "work_type_id", nullable = false)
+    private WorkTypeEntity workTypeEntity;
+
 }

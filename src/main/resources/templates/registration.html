@@ -7,16 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--    Bootstrap CSS-->
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Boostrap Validator</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>  
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="validator.min.js"></script>
-    <link rel="stylesheet" href="/style/registration.css">
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/registration.css">
+    <script type="text/javascript" src="js/registration.js"></script>
+
 </head>
-<body>
+
+<body ng-app="REGISTRATION" ng-controller="REGISTRATION_CONTROLLER" data-ng-init="init()">
     
 <!--Navbar-->
 <nav class="navbar navbar-dark bg-dark">
@@ -28,84 +38,107 @@
   </div>
 </nav>
 
-    <div class="main">
+<div class="main">
 <div class="RegTitle"><p>Регистрация</p></div>
 <!--Validation-->
 <div class="registrationForm">
-<form action="/registration" method="post">
+<form>
      <div class="mb-3">
-        <label for="InputEmail" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+         <label for="InputEmail" class="form-label">Email</label>
+         <input ng-model="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+         <div id="emailMsg" class="form-text">Заполните email</div>
+     </div>
+    <div class="mb-3">
+        <label for="InputName" class="form-label">Имя</label>
+        <input ng-model="name" type="name" class="form-control" id="InputName" aria-describedby="nameHelp">
+        <div id="nameMsg" class="form-text">Заполните Имя</div>
     </div>
     <div class="mb-3">
-        <label for="InputName" class="form-label">Name</label>
-        <input type="name" class="form-control" id="InputName" aria-describedby="nameHelp">
+        <label for="InputLastname" class="form-label">Фамилия</label>
+        <input ng-model="lastName" type="lastname" class="form-control" id="InputLastname" aria-describedby="lastnameHelp">
+        <div id="lastnameMsg" class="form-text">Заполните Фамилию</div>
     </div>
     <div class="mb-3">
-        <label for="InputLastname" class="form-label">Lastname</label>
-        <input type="lastname" class="form-control" id="InputLastname" aria-describedby="lastnameHelp">
+        <label for="InputPatronymic" class="form-label">Отчество</label>
+        <input ng-model="patronymic" type="patronymic" class="form-control" id="InputPatronymic" aria-describedby="patronymicHelp">
+        <div id="patronymicMsg" class="form-text">Заполните Отчество</div>
     </div>
     <div class="mb-3">
-        <label for="InputPatronymic" class="form-label">Patronymic</label>
-        <input type="patronymic" class="form-control" id="InputPatronymic" aria-describedby="patronymicHelp">
+        <label for="InputPassportData" class="form-label">Серия и номер паспорта</label>
+        <input ng-model="passportData" type="patronymic" class="form-control" id="InputPassportData" aria-describedby="patronymicHelp">
     </div>
 
+    <div>
+        <label for="birthDate" class="form-label">Дата рождения</label>
+        <input ng-model="birthDate" type="date" id="birthDate" name="birth_date"
+               value="2021-07-22"
+               min="2000-01-01" max="2050-12-31">
+    </div>
+    <div>
+        <label for="contractBegin" class="form-label">Дата начала договора</label>
+        <input ng-model="contractBegin" type="date" id="contractBegin" name="contract_begin"
+               value="2021-07-22"
+               min="2000-01-01" max="2050-12-31">
+    </div>
+    <div>
+        <label for="contractEnd" class="form-label">Дата окончания договора</label>
+        <input ng-model="contractEnd" type="date" id="contractEnd" name="contract_end"
+               value="2021-07-22"
+               min="2000-01-01" max="2050-12-31">
+    </div>
 
-    <!--        <div>-->
-    <!--            <label for="birthDate" class="form-label">Дата рождения</label>-->
-    <!--            <input type="date" id="birthDate" name="birth_date"-->
-    <!--                   value="2021-07-22"-->
-    <!--                   min="2000-01-01" max="2050-12-31">-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--            <label for="contractBegin" class="form-label">Дата начала договора</label>-->
-    <!--            <input type="date" id="contractBegin" name="contract_begin"-->
-    <!--                   value="2021-07-22"-->
-    <!--                   min="2000-01-01" max="2050-12-31">-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--            <label for="contractEnd" class="form-label">Дата окончания договора</label>-->
-    <!--            <input type="date" id="contractEnd" name="contract_end"-->
-    <!--                   value="2021-07-22"-->
-    <!--                   min="2000-01-01" max="2050-12-31">-->
-    <!--        </div>-->
+    <select ng-model="paymentType"
+            ng-options="paymentType as paymentType.base_info.name for paymentType in paymentTypeList"
+            class="form-select form-select-lg mb-3" aria-label=".form-select-lg paymentType">
+        <option ng-repeat="paymentType in paymentTypeList">{{paymentType.base_info.name}}</option>
+    </select>
+    <select ng-model="dorm"
+            ng-options="dorm as dorm.base_info.name for dorm in dormList"
+            ng-change="sectionGet(dorm)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg dorm">
+        <option ng-repeat="dorm in dormList">{{dorm.base_info.name}}</option>
+    </select>
+    <select ng-model="section"
+            ng-options="section as section.base_info.name for section in sectionList"
+            ng-change="roomGet(section)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg section">
+        <option ng-repeat="section in sectionList">{{section.base_info.name}}</option>
+    </select>
+    <select ng-model="room"
+            ng-options="room as room.base_info.name for room in roomList"
+            class="form-select form-select-lg mb-3" aria-label=".form-select-lg room">
+        <option ng-repeat="room in roomList">{{room.base_info.name}}</option>
+    </select>
 
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg paymentType">
-        <option>Типы оплаты</option>
-    </select>
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg dorm">
-        <option>Общежитие 1</option>
-    </select>
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg section">
-        <option>Секция 701-708</option>
-    </select>
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg room">
-        <option>Комната 708</option>
-    </select>
+    <label for="scanOne" class="form-label">Выберите PDF файл</label>
+    <input type="file" enctype="multipart/form-data" class="form-control" id="scanOne">
+
+    <label for="scanTwo" class="form-label">Выберите PDF файл</label>
+    <input type="file" enctype="multipart/form-data" class="form-control" id="scanTwo">
 
     <div class="mb-3">
-        <label for="InputPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="InputPassword">
+        <label for="InputPassword" class="form-label">Пароль</label>
+        <input ng-model="password" type="password" class="form-control" id="InputPassword">
     </div>
     <div class="mb-3">
-      <label for="InputPassword1" class="form-label">Repeat Password</label>
-      <input type="passrep" class="form-control" id="InputPassword1">
-      <div id="passwordHelp" class="form-text">Please, Repeat password.</div>
+      <label for="InputPasswordRepeat" class="form-label">Повторите пароль</label>
+      <input type="password" class="form-control" id="InputPasswordRepeat">
+      <div id="passwordHelp" class="form-text">Пожалуйста, повторите пароль</div>
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="Agreement">
-      <label class="form-check-label" for="Agreement">Agree with...</label>
-    </div>
+<!--    <div class="mb-3 form-check">-->
+<!--      <input type="checkbox" class="form-check-input" id="Agreement">-->
+<!--      <label class="form-check-label" for="Agreement">Agree with...</label>-->
+<!--    </div>-->
     <div class="linkes">
-<!--        <input type="hidden" name="_csrf" value="${_csrf.token}">-->
-        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        <button type="button"
+                ng-click="registrationUser(email, name, lastName, patronymic, birthDate, contractBegin,
+                contractEnd, paymentType, dorm, section, room, password, passportData)"
+                class="btn btn-primary">Зарегистрироваться</button>
     </div>
     <div class="linkes">
         <a id="log" href="#">Войти</a>
     </div>
 </form>
 </div>
-    </div>
+</div>
     
 <footer style="background-color: #011100; text-align: center; height: 55px; color: white;"><p>(c)2021</p></footer>     
 

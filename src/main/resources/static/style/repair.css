@@ -13,7 +13,7 @@ html{height: 100%;
     flex-grow: 1;
 }
 
-.registrationForm{
+.repairForm{
     margin-left: 20%;
     margin-right: 20%;
     padding: 5%;
@@ -21,7 +21,7 @@ html{height: 100%;
     border-color: #C4C4C4;
     border: solid;
 }
-.registrationForm button {
+.repairForm button {
     background-color: transparent;
     color:#6A9B75;
     border-color: #6A9B75;
@@ -30,7 +30,7 @@ html{height: 100%;
 
 }
 
-.registrationForm button:hover {
+.repairForm button:hover {
     color: white;
     background-color:#6A9B75;
     border-color: #6A9B75;
@@ -68,14 +68,14 @@ html{height: 100%;
 
 
 @media (max-width: 575.98px) { 
-.registrationForm button {
+.repairForm button {
     background-color: transparent;
     color:#6A9B75;
     border-color: #6A9B75;
     border: solid;
     font-size: 8pt;
     }
-.registrationForm{
+.repairForm{
     margin-left: 5%;
     margin-right: 5%;
     padding: 5%;
@@ -91,14 +91,14 @@ html{height: 100%;
 
 
 @media (min-width: 1500px) {
-    .registrationForm button {
+    .repairForm button {
     background-color: transparent;
     color:#6A9B75;
     border-color: #6A9B75;
     border: solid;
     font-size: 17pt;
     }
-.registrationForm{
+.repairForm{
     margin-left: 30%;
     margin-right: 30%;
     padding: 5%;
