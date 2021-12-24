@@ -1,7 +1,6 @@
 package ru.sibsutis.dormitory.server.app.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -10,8 +9,10 @@ import ru.sibsutis.dormitory.server.service.data.converters.DormEntityToDormDto;
 import ru.sibsutis.dormitory.server.service.data.converters.PaymentTypeEntityToPaymentTypeDto;
 import ru.sibsutis.dormitory.server.service.data.converters.RoomEntityToRoomDto;
 import ru.sibsutis.dormitory.server.service.data.converters.SectionEntityToSectionDto;
+import ru.sibsutis.dormitory.server.service.operation.converters.CertificationRequestDtoToCertificationRequestEntity;
+import ru.sibsutis.dormitory.server.service.operation.converters.RepairTenantInfoToRepairInfoEntity;
+import ru.sibsutis.dormitory.server.service.operation.converters.RepairTypeEntityToRepairTypeDto;
 import ru.sibsutis.dormitory.server.service.security.converters.UserInfoDtoToTenantEntity;
-import ru.sibsutis.dormitory.server.service.security.converters.UserInfoDtoToUserEntity;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -23,6 +24,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addConverter(new RoomEntityToRoomDto());
         registry.addConverter(new UserInfoDtoToTenantEntity());
         registry.addConverter(new PaymentTypeEntityToPaymentTypeDto());
+        registry.addConverter(new RepairTypeEntityToRepairTypeDto());
+        registry.addConverter(new RepairTenantInfoToRepairInfoEntity());
+        registry.addConverter(new CertificationRequestDtoToCertificationRequestEntity());
     }
 
     @Override

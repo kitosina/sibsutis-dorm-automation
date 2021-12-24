@@ -1,11 +1,9 @@
 package ru.sibsutis.dormitory.server.model.entity.data;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,7 +58,7 @@ public class RoomEntity {
     @OneToMany(mappedBy = "roomEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TenantEntity> tenantEntities;
 
-    public RoomEntity(Long id, int numRoom, int capacity) {
+    public RoomEntity(final long id, final int numRoom, final int capacity) {
         this.id = id;
         this.numRoom = numRoom;
         this.capacity = capacity;

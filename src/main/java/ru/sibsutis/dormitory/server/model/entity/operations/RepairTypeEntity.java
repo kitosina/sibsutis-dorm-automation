@@ -1,5 +1,6 @@
 package ru.sibsutis.dormitory.server.model.entity.operations;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,11 +24,11 @@ public class RepairTypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
     /**
      * Тип ремонта (сантехника, электрика и тд)
      */
     @SuppressWarnings("checkstyle:magicnumber")
+    @Setter(AccessLevel.NONE)
     @Column(name = "repair_type_name", length = 30, unique = true)
     private String repairTypeName;
 

@@ -1,4 +1,4 @@
-package ru.sibsutis.dormitory.server.model.dto.data.response;
+package ru.sibsutis.dormitory.server.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

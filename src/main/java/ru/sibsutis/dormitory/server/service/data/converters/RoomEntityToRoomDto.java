@@ -1,7 +1,7 @@
 package ru.sibsutis.dormitory.server.service.data.converters;
 
 import org.springframework.core.convert.converter.Converter;
-import ru.sibsutis.dormitory.server.model.dto.data.response.BaseInfoDto;
+import ru.sibsutis.dormitory.server.model.dto.BaseInfoDto;
 import ru.sibsutis.dormitory.server.model.dto.data.response.RoomDto;
 import ru.sibsutis.dormitory.server.model.dto.data.response.RoomInfoDto;
 import ru.sibsutis.dormitory.server.model.entity.data.RoomEntity;

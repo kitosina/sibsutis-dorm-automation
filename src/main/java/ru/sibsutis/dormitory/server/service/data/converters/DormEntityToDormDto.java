@@ -1,13 +1,12 @@
 package ru.sibsutis.dormitory.server.service.data.converters;
 
 import org.springframework.core.convert.converter.Converter;
-import ru.sibsutis.dormitory.server.model.dto.data.response.BaseInfoDto;
+import ru.sibsutis.dormitory.server.model.dto.BaseInfoDto;
 import ru.sibsutis.dormitory.server.model.dto.data.response.DormDto;
 import ru.sibsutis.dormitory.server.model.dto.data.response.DormInfoDto;
 import ru.sibsutis.dormitory.server.model.entity.data.DormEntity;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class DormEntityToDormDto implements Converter<Collection<DormEntity>, DormDto> {

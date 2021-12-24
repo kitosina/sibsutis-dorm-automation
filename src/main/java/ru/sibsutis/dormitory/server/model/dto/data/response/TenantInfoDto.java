@@ -3,17 +3,25 @@ package ru.sibsutis.dormitory.server.model.dto.data.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
+import ru.sibsutis.dormitory.server.model.dto.BaseInfoDto;
 
 @Builder
 @Data
 public class TenantInfoDto {
 
-    @JsonProperty("dorm")
-    private DormDto dormDto;
+    @JsonProperty("personal_info")
+    private PersonalInfoDto personalInfoDto;
 
-    @JsonProperty("section")
-    private SectionDto sectionDto;
+    @JsonProperty("base_info")
+    private BaseInfoDto baseInfoDto;
 
-    @JsonProperty("room")
-    private RoomDto roomDto;
+    @JsonProperty("dorm_tenant")
+    private DormInfoDto dormDto;
+
+    @JsonProperty("section_tenant")
+    private SectionInfoDto sectionDto;
+
+    @JsonProperty("room_tenant")
+    private RoomInfoDto roomDto;
+
 }

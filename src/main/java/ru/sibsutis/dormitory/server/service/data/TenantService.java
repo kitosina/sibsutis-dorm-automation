@@ -18,6 +18,7 @@ import ru.sibsutis.dormitory.server.model.entity.data.TenantEntity;
 import ru.sibsutis.dormitory.server.repository.data.RoomRepository;
 import ru.sibsutis.dormitory.server.repository.data.SectionRepository;
 import ru.sibsutis.dormitory.server.repository.data.TenantRepository;
+import ru.sibsutis.dormitory.server.service.data.converters.TenantEntityToTenantDto;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,30 +36,43 @@ public class TenantService {
     private final ConversionService conversionService;
 
     private static final String MSG_NOT_AUTH_USER = "Ошибка авторизованного пользователя";
+    private static final String MSG_NOT_FOUND_TENANT = "Не найден жилец с email: %s";
+    private static final String MSG_NOT_FOUND_ROOM = "Не найдена комната для жильца с ФИО: %s %s %s";
+    private static final String MSG_NOT_FOUND_SECTION = "Не найдена секция для комнаты: %s";
+    private static final String MSG_NOT_FOUND_DORM = "Не найдено общежитие для секции: %s с id: %d";
 
-    public List<TenantInfoDto> tenantInfo(final String user) {
-//        String emailUser;
-//        if (user == null) {
-//            throw new RuntimeException(MSG_NOT_AUTH_USER);
-//        } else {
-//            emailUser = user.getUsername();
-//        }
-        TenantEntity byEmail = tenantRepository.findByEmail(user)
-                .orElseThrow(() -> new RuntimeException());
-        RoomEntity roomEntity = roomRepository.findByTenantEntities(byEmail.getId()).orElseThrow(() -> new RuntimeException());
-        SectionEntity sectionEntity = sectionRepository.findByRoomEntities(roomEntity.getId())
-                .orElseThrow(() -> new RuntimeException());
+    public TenantDto tenantInfoAuth(final User user) {
+        String emailUser;
+        if (user == null) {
+            throw new RuntimeException(MSG_NOT_AUTH_USER);
+        } else {
+            emailUser = user.getUsername();
+            TenantEntity tenantEntity = tenantRepository.findByEmail(emailUser)
+                    .orElseThrow(() -> new RuntimeException(String.format(MSG_NOT_FOUND_TENANT, user)));
 
-        DormEntity dormEntity = sectionEntity.getDormEntity();
-        List<TenantInfoDto> tenantInfoDtos = new ArrayList<>();
-        TenantInfoDto tenantInfoDto = TenantInfoDto.builder()
-                .dormDto(conversionService.convert(Collections.singleton(dormEntity), DormDto.class))
-                .sectionDto(conversionService.convert(Collections.singleton(sectionEntity), SectionDto.class))
-                .roomDto(conversionService.convert(Collections.singleton(roomEntity), RoomDto.class))
-                .build();
-        tenantInfoDtos.add(tenantInfoDto);
+            RoomEntity roomEntity = roomRepository.findByTenantEntities(tenantEntity.getId())
+                    .orElseThrow(() -> new RuntimeException(String.format(MSG_NOT_FOUND_ROOM,
+                            tenantEntity.getName(), tenantEntity.getLastName(), tenantEntity.getPatronymic())));
 
-        return tenantInfoDtos;
+            SectionEntity sectionEntity = sectionRepository.findByRoomEntities(roomEntity.getId())
+                    .orElseThrow(() -> new RuntimeException(String.format(MSG_NOT_FOUND_SECTION, roomEntity.getNumRoom())));
+
+            DormEntity dormEntity = Optional.of(sectionEntity.getDormEntity())
+                    .orElseThrow(() -> new RuntimeException(String.format(MSG_NOT_FOUND_DORM,
+                            sectionEntity.getName(), sectionEntity.getId())));
+
+            TenantEntityToTenantDto converter = new TenantEntityToTenantDto();
+            List<TenantInfoDto> tenantInfoDto = List.of(converter.convertOneTenant(
+                    conversionService.convert(Collections.singleton(dormEntity), DormDto.class).getDormInfoDto(), // DormDto
+                    conversionService.convert(Collections.singleton(sectionEntity), SectionDto.class).getSectionInfoDto(), // SectionDto
+                    conversionService.convert(Collections.singleton(roomEntity), RoomDto.class).getRoomInfoDto(), // RoomDto
+                    tenantEntity)
+            );
+
+            return TenantDto.builder()
+                    .tenantInfoDto(tenantInfoDto)
+                    .build();
+        }
     }
 
 }

@@ -11,9 +11,9 @@ import java.util.Optional;
 @Repository
 public interface TenantRepository extends JpaRepository<TenantEntity, Long> {
 
-    @Query("select te from tenant te " +
-            "join fetch te.roomEntity rm " +
-            "where te.email = :email")
+    @Query("select te from tenant te "
+            + "join fetch te.roomEntity rm "
+            + "where te.email = :email")
     Optional<TenantEntity> findByEmail(@Param("email") final String email);
 
 }

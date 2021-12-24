@@ -1,6 +1,8 @@
 package ru.sibsutis.dormitory.server.model.entity.operations;
 
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +19,16 @@ import javax.persistence.Table;
 @Table(name = "request_status", schema = "operations")
 public class RequestStatusEntity {
 
+    @AllArgsConstructor
+    @Getter
+    public enum RequestStatusName {
+        PROCESSING("Ожидание"),
+        DENIED("Отказано"),
+        DONE("Выполнено");
+
+        private String requestStatusName;
+    }
+
     /**
      * Идентификатор
      */
@@ -28,7 +40,8 @@ public class RequestStatusEntity {
      * Статус операции (Выполнено, не выполнено и тд)
      */
     @SuppressWarnings("checkstyle:magicnumber")
-    @Column(name = "request_status_name", length = 10, unique = true)
+    @Setter(AccessLevel.NONE)
+    @Column(name = "request_status_name", length = 20, unique = true)
     private String requestStatusName;
 
 }

@@ -95,7 +95,7 @@ app.controller("REGISTRATION_CONTROLLER",function($scope, $http) {
             }
         }).catch(function (err) {
             alert("Ошибка регистрации");
-        });;
+        });
 
     }
 

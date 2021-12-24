@@ -2,7 +2,6 @@ package ru.sibsutis.dormitory.server.app.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,6 @@ import javax.sql.DataSource;
 @PropertySource(value = "classpath:dorm-automation.properties", encoding = "UTF-8")
 public class LiquibaseConfig {
 
-    @Qualifier("dormDataSource")
     private final DataSource dormDataSource;
 
     /**

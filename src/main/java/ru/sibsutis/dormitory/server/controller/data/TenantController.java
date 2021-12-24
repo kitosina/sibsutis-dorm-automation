@@ -22,8 +22,8 @@ public class TenantController {
     public static final String URL_TENANT = "/tenant";
 
     @GetMapping
-    public ResponseEntity tenantInfo(@RequestParam("user_email") final String userAuth) {
-        return ResponseEntity.ok(tenantService.tenantInfo(userAuth));
+    public ResponseEntity tenantInfoAuth(@AuthenticationPrincipal final User userAuth) {
+        return ResponseEntity.ok(tenantService.tenantInfoAuth(userAuth));
     }
 
 }

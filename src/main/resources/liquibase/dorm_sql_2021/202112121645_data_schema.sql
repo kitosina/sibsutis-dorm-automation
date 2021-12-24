@@ -142,7 +142,7 @@ create table data.inventory
     id        serial
         constraint inventory_pk
             primary key,
-    inventory varchar(30)
+    name varchar(30)
 );
 
 comment on table data.inventory is 'Инвентарь';
@@ -170,13 +170,32 @@ alter table data.inventarisation
     owner to dorm;
 
 create unique index inventory_inventory_uindex
-    on data.inventory (inventory);
+    on data.inventory (name);
 
 create unique index inventarisation_id_uindex
     on data.inventarisation (id);
 
 create unique index inventory_id_uindex
     on data.inventory (id);
+
+-- auto-generated definition
+create table data.work_type
+(
+    id        serial
+        constraint work_type_pk
+            primary key,
+    name_type varchar(100) not null
+);
+
+alter table data.work_type
+    owner to dorm;
+
+create unique index work_type_id_uindex
+    on data.work_type (id);
+
+create unique index work_type_work_type_uindex
+    on data.work_type (name_type);
+
 
 create table data.workers
 (
@@ -195,7 +214,10 @@ create table data.workers
     dorm_id        integer
         constraint workers_fk
             references data.dorm,
-    post           varchar,
+    work_type_id   integer not null
+        constraint work_type_id
+            references data.work_type
+            on update cascade on delete cascade,
     email          varchar
 );
 
